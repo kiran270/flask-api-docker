@@ -1,10 +1,11 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Running build automation'
-            }
-        }
+	agent none
+  stages {
+    stage('Docker Build') {
+    	agent any
+      steps {
+      	sh 'docker build -t flask-api-docker:latest .'
+      }
     }
+  }
 }
